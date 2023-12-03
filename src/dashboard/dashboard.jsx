@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { user } from "../services/user"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import CourseCard from "../lib/card"
 import { Container, Typography,Grid } from "@mui/material"
+import services from "../services/services"
+import { setCourses } from "../redux/actions"
 
 
 function Dashboard(){
@@ -11,28 +13,39 @@ function Dashboard(){
 
   const state= useSelector((state)=>state.courses)
 
+  const dispatch= useDispatch()
+
   useEffect(()=>{
 
     let userr = user()
 
-    let cs=[]
+    services.getData('courses').then((res)=>{
 
-    userr.courses.forEach((i)=>{
+      dispatch(setCourses(res))
 
-      let indx= state.findIndex((c)=>{
+      let cs=[]
 
-        return c.id===i
+      userr.courses.forEach((i)=>{
+  
+        let indx= state.findIndex((c)=>{
+  
+          return c.id===i
+  
+        })
+  
+       cs.push(state[indx])
+  
+       setEnrollCourses(cs)
 
+       console.log(cs);
+  
+  
       })
-
-     cs.push(state[indx])
-
-     setEnrollCourses(cs)
-
 
     })
 
-    console.log(cs);
+
+   // console.log(cs);
  
   },[])
 

@@ -95,6 +95,7 @@ function TopAppBar(){
 
               return <Button sx={{color:'black'}} key={index}
               onClick={()=>navigate(element.path)}
+              disabled={searchVal.length>0?true:false}
               >{element.title}</Button>
 
             })
