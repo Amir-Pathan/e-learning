@@ -11,7 +11,7 @@ import { login } from "../redux/actions";
 
 function Login(){
 
-  const [email,setEmaiil] = useState('bob@eample.com')
+  const [email,setEmaiil] = useState('bob@gmail.com')
 
   const [password,setPassword] = useState('1234')
 
