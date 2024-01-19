@@ -51,7 +51,7 @@ function Dashboard(){
 
               return <Grid item xs={12} md={4} key={i}> 
               <CourseCard key={i}
-              thumbnail={c.thumbnail}
+              thumbnail={c.thumbnail} 
               name={c.name}
               description={c.description}
               enrollmentStatus={c.enrollmentStatus}
